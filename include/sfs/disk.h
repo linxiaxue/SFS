@@ -55,4 +55,12 @@ public:
     // @param	blocknum    Block to write to
     // @param	data	    Buffer to write from
     void write(int blocknum, char *data);
+
+    //get reads and writes
+    size_t getReads(){
+        return Reads;
+    }
+    size_t getWrites(){
+        return Writes;
+    }
 };

@@ -36,8 +36,18 @@ private:
     };
 
     // TODO: Internal helper functions
+    void set_free_block_map(uint32_t *pointer, uint32_t length, uint32_t value);
+    bool load_inode(size_t inumber, Inode *node);
+    bool save_inode(size_t inumber, Inode *node);
+    size_t i_read(uint32_t *bnumPointer, uint32_t bnumNumber, size_t length, char *data, size_t offset);
+    size_t i_write(uint32_t *bnumPointer, uint32_t bnumNumber, size_t length, char *data, size_t offset);
+    ssize_t allocate_free_block();
 
     // TODO: Internal member variables
+    Disk *currMountedDisk = NULL;  //当前挂载的磁盘
+    Inode *inode_table = NULL;    //inode表
+    uint32_t *free_block_map = NULL;    //空闲块图
+
 
 public:
     static void debug(Disk *disk);
